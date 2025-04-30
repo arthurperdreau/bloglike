@@ -16,6 +16,7 @@
                 {% endif %}
                 {% if app.user %}
                     <span class="nav-link fw-bolder">Connected as {{ app.user.email }}</span>
+                    <a class="nav-link" href="{{ path('see_profile',{ id:app.user.profile.id}) }}">Profile</a>
                 {% else %}
                     <span class="nav-link fw-bolder">Not connected</span>
                 {% endif %}

@@ -43,3 +43,13 @@ liip_imagine:
             filters:
 
                 thumbnail: { size: [ 350, 100 ], mode: outbound }
+
+        picture:
+
+            # adjust the image quality to 75%
+            quality: 55
+
+            # list of transformations to apply (the "filters")
+            filters:
+
+                thumbnail: { size: [ 150, 150 ], mode: inset }

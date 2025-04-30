@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Your profile
+{% endblock %}
+
+{% block body %}
+    <a href="{{ path('posts') }}" class="fs-2 btn ">< Home</a>
+    <div class="container mt-2">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h3 class="card-title mb-4">
+                    Here you can see your profile
+                    {% if app.user.profile.displayName %}
+                        {{ app.user.profile.displayName }}
+                    {% else %}
+                        {{ app.user.email }}
+                    {% endif %}.
+                </h3>
+
+                {% if app.user.profile.picture %}
+                    <div class="mb-4 text-center">
+                        <img src="{{ vich_uploader_asset(app.user.profile.picture, 'imageFile')|imagine_filter('picture') }}" alt="Profile Picture"
+                             class="img-thumbnail rounded-circle">
+                    </div>
+                {% endif %}
+
+                <ul class="list-group list-group-flush mb-4">
+                    <li class="list-group-item">
+                        <strong>Email :</strong> {{ app.user.email }}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Display name :</strong>
+                        {% if app.user.profile.displayName %}
+                            {{ app.user.profile.displayName }}
+                        {% else %}
+                            <em>currently undefined</em>
+                        {% endif %}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Roles :</strong>
+                        {% for role in user.roles %}
+                            {% if role == 'ROLE_USER' %}
+                                <span class="badge rounded-pill text-bg-success">User</span>
+                            {% elseif role == 'ROLE_ADMIN' %}
+                                <span class="badge rounded-pill text-bg-warning">Admin</span>
+                            {% endif %}
+                        {% endfor %}
+                    </li>
+                </ul>
+
+                <div class="mt-4">
+                    <h5>Set your displayName :</h5>
+                    {{ form_start(form, {'action': path('see_profile', {id: app.user.profile.id}), 'method': 'POST'}) }}
+                    <div class="mb-3">
+                        {{ form_widget(form.displayName, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <button type="submit" class="btn btn-outline-primary">Edit</button>
+                    {{ form_end(form) }}
+                </div>
+
+                <div class="mt-4">
+                    <a href="{{ path('app_addimageprofile', {id: app.user.profile.id}) }}" class="btn btn-primary">
+                        Ajouter une image de profil
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

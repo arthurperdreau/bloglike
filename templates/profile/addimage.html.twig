@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+{% block body %}
+    {% if app.user.profile.picture %}
+    <div>
+        <img src="{{ vich_uploader_asset(app.user.profile.picture, "imageFile") }}">
+        <a class="btn btn-danger" href="{{ path('add_removepictureprofile',{id:app.user.profile.picture.id}) }}">Delete</a>
+    </div>
+    {% endif %}
+    {{ form_start(form) }}
+    {{ form_row(form.imageFile) }}
+    <button type="submit" class="btn btn-success">Add</button>
+    {{ form_end(form) }}
+{% endblock %}
