@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ProfileRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+
 #[ORM\Entity(repositoryClass: ProfileRepository::class)]
 class Profile
 {
@@ -13,10 +14,11 @@ class Profile
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToOne(inversedBy: 'profile', cascade: ['persist', 'remove'])]
+
+    #[ORM\OneToOne(inversedBy: 'profile', cascade: ['persist'])]
     private ?Image $picture = null;
 
-    #[ORM\OneToOne(inversedBy: 'profile', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'profile',)]
     private ?User $ofUser = null;
 
     #[ORM\Column(length: 255, nullable: true)]

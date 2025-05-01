@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
+
 #[ORM\Entity(repositoryClass: ImageRepository::class)]
 #[Vich\Uploadable]
 class Image
@@ -17,6 +18,7 @@ class Image
     private ?int $id = null;
 
     // NOTE: This is not a mapped field of entity metadata, just a simple property.
+
     #[Vich\UploadableField(mapping: 'lesimages', fileNameProperty: 'imageName', size: 'imageSize')]
     private ?File $imageFile = null;
 
@@ -32,7 +34,7 @@ class Image
     #[ORM\ManyToOne(inversedBy: 'images')]
     private ?Post $post = null;
 
-    #[ORM\OneToOne(mappedBy: 'picture', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'picture', cascade: ['persist'])]
     private ?Profile $profile = null;
 
     /**
