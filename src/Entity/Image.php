@@ -135,7 +135,7 @@ class Image implements \Serializable
 
     public function __serialize(): array
     {
-        return ['imageName' => $this->imageName];
+        return [];
     }
 
     public function __unserialize(array $data): void
