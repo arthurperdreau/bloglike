@@ -14,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 final class PostController extends AbstractController
 {
@@ -46,7 +47,7 @@ final class PostController extends AbstractController
         }
 
         return $this->render('post/new.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 

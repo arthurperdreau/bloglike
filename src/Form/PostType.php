@@ -6,8 +6,10 @@ use App\Entity\Post;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
 
 class PostType extends AbstractType
 {
@@ -15,8 +17,7 @@ class PostType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('content')
-        ;
+            ->add('content',  TextareaType::class, []);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

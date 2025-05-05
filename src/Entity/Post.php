@@ -20,10 +20,10 @@ class Post
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Assert\Length(min:5, max: 90,)]
+    #[Assert\Length(min:5, max: 90)]
     #[Assert\Regex(
         pattern: '/^(?!.*\b(choucroute)\b).*/i',
-        message: 'Le mot "choucroute" est interdit.'
+        message: 'Le mot "choucroute" est interdit.',
     )]
     #[ORM\Column(length: 255)]
     private ?string $title = null;
