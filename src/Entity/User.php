@@ -88,13 +88,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->email;
+        return (string)$this->email;
     }
 
     /**
+     * @return list<string>
      * @see UserInterface
      *
-     * @return list<string>
      */
     public function getRoles(): array
     {
@@ -251,18 +251,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-
-//    public function __serialize(): array
-//    {
-//        return [
-//            'id' => $this->id,
-//            'email' => $this->email,
-//            'password' => $this->password,
-//        ];
-//    }
-//
-//    public function __unserialize(array $data): void
-//    {
-//        return;
-//    }
 }
