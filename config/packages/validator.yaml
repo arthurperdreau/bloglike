@@ -1,9 +1,9 @@
 framework:
-    validation:
-        enabled: true
-        enable_attributes: true
-        auto_mapping:
-            App\Entity\: []
+#    validation:
+#        enabled: true
+#        enable_attributes: true
+#        auto_mapping:
+#            App\Entity\: []
 
 
 when@test:
